@@ -22,4 +22,16 @@ app.route('/books')
             })
     })
 
+app.route('/books/:id')
+    .get((req, res) => {
+        Books.findOne({where: req.params})
+            .then(result => {
+                res.json(result)
+            })
+            .catch(error => {
+                console.log(error)
+                res.status(412)
+            })
+    })
+
 export default app;

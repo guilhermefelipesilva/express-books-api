@@ -25,4 +25,16 @@ describe('Routes Books', () => {
                 })
         })
     })
+
+    describe('Route GET /books/{id}', () => {
+        it('should return a book', done => {
+            request
+                .get('/books/1')
+                .end((err, res) => {
+                    expect(res.body.id).to.be.eql(defaultBook.id);
+                    expect(res.body.name).to.be.eql(defaultBook.name);
+                    done(err)
+                })
+        })
+    })
 })
