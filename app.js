@@ -1,11 +1,13 @@
 import express from 'express'
 import config from './config/config'
 import datasource from './config/datasource'
+import bodyParser from 'body-parser'
 
 const app = express();
 
 app.config = config;
 app.datasource = datasource(app);
+app.use(bodyParser.json())
 app.set('port', 7000)
 
 const Books = app.datasource.models.Books;
@@ -20,6 +22,11 @@ app.route('/books')
                 console.log(error)
                 res.status(412)
             })
+    })
+    .post((req, res) => {
+        Books.create(req.body)
+            .then(result => res.json(result))
+            .catch(error => res.status(412))
     })
 
 app.route('/books/:id')

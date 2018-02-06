@@ -22,9 +22,9 @@ describe('Routes Books', () => {
                     expect(res.body[0].id).to.be.eql(defaultBook.id);
                     expect(res.body[0].name).to.be.eql(defaultBook.name);
                     done(err)
-                })
-        })
-    })
+                });
+        });
+    });
 
     describe('Route GET /books/{id}', () => {
         it('should return a book', done => {
@@ -33,8 +33,25 @@ describe('Routes Books', () => {
                 .end((err, res) => {
                     expect(res.body.id).to.be.eql(defaultBook.id);
                     expect(res.body.name).to.be.eql(defaultBook.name);
-                    done(err)
-                })
-        })
-    })
-})
+                    done(err);
+                });
+        });
+    });
+
+    describe('Route POST /books', () => {
+        it('should create a book', done => {
+            const newBook = {
+                id: 2,
+                name: 'new Book'
+            };
+            request
+                .post('/books')
+                .send(newBook)
+                .end((err, res) => {
+                    expect(res.body.id).to.be.eql(newBook.id);
+                    expect(res.body.name).to.be.eql(newBook.name);
+                    done(err);
+                });
+        });
+    });
+});
