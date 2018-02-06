@@ -65,8 +65,18 @@ describe('Routes Books', () => {
                 .put('/books/1')
                 .send(updatedBook)
                 .end((err, res) => {
-                    console.log('response', res.body)
                     expect(res.body).to.be.eql([1]);
+                    done(err);
+                });
+        });
+    });
+
+    describe('Route DELETE /books/{id}', () => {
+        it('should delete a book', done => {
+            request
+                .delete('/books/1')
+                .end((err, res) => {
+                    expect(res.statusCode).to.be.eql(204);
                     done(err);
                 });
         });
