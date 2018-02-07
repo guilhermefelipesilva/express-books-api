@@ -6,7 +6,8 @@
     "it": true,
     "request": true,
     "expect": true,
-    "app": true
+    "app": true,
+    "td": true
   },
   "rules": {
     "prefer-destructuring": ["error", {"object": false, "array": false}]
