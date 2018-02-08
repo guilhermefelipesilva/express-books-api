@@ -1,1 +1,4 @@
 node_modules/
+test_books.sqlite
+prod_books.sqlite
+books.sqlite
