@@ -45,4 +45,3 @@ class BooksController {
 }
 
 export default BooksController;
-
